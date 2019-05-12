@@ -52,11 +52,12 @@ class CurrenciesScreen: MvpAppCompatActivity(),CurrenciesView {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 presenter.refresh(spinner.selectedItem.toString())
+
+                val imgResId =("flag_" + (spinner.selectedItem).toString().toLowerCase())
+                val resId = resources.getIdentifier(imgResId , "drawable", packageName)
+                currentFlag.setImageResource(resId)
             }
         }
-        val imgResId =("flag_" + (spinner.selectedItem).toString().toLowerCase())
-        val resId = resources.getIdentifier(imgResId , "drawable", packageName)
-        currentFlag.setImageResource(resId)
     }
 
     override fun showProgress() {}
