@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
@@ -12,6 +13,8 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment.*
+import kotlinx.android.synthetic.main.fragment.view.*
 import java.math.BigDecimal
 import javax.inject.Inject
 
@@ -51,6 +54,9 @@ class CurrenciesScreen: MvpAppCompatActivity(),CurrenciesView {
                 presenter.refresh(spinner.selectedItem.toString())
             }
         }
+        val imgResId =("flag_" + (spinner.selectedItem).toString().toLowerCase())
+        val resId = resources.getIdentifier(imgResId , "drawable", packageName)
+        currentFlag.setImageResource(resId)
     }
 
     override fun showProgress() {}
@@ -82,7 +88,7 @@ class CurrenciesScreen: MvpAppCompatActivity(),CurrenciesView {
     }
 
     private fun updateItemAdapterData(d:CurrencyResponse){
-            recyclerAdapter = RecyclerAdapter(d, BigDecimal.valueOf((CurrencyValue.text.toString()).toDouble()))
+            recyclerAdapter = RecyclerAdapter(d, BigDecimal.valueOf((CurrencyValue.text.toString()).toDouble()),this)
             recyclerview.adapter = recyclerAdapter
 
             recyclerAdapter.refreshData(d)
