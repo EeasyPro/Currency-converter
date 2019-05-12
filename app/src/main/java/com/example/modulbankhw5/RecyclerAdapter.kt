@@ -20,7 +20,6 @@ class RecyclerAdapter(private var currencyData: CurrencyResponse,
                       ) : RecyclerView.Adapter<RecyclerAdapter.ItemViewHolder>() {
 
     private var rates : LinkedList<CurrencyItemData>
-
     init {
         if (currencyData.base == "EUR") {
             currencyData.rates["EUR"] = baseCurrencyAmount
@@ -64,8 +63,8 @@ class RecyclerAdapter(private var currencyData: CurrencyResponse,
             itemView.Valuta.text = currencyItemData.name
             itemView.Currency.setText((currencyItemData.value * baseCurrencyAmount).setScale(3,RoundingMode.HALF_DOWN).toEngineeringString())
 
-            val imageName = "flag_" + currencyItemData.name.toLowerCase()
-            val resId = context.getResources().getIdentifier(imageName , "drawable", context.getPackageName())
+            val imgResId = "flag_" + currencyItemData.name.toLowerCase()
+            val resId = context.getResources().getIdentifier(imgResId , "drawable", context.getPackageName())
             itemView.imageView.setImageResource(resId)
         }
 

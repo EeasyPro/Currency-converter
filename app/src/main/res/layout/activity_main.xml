@@ -27,15 +27,13 @@
                         android:id="@+id/currentFlag"
                         app:srcCompat="@drawable/flag_rub"
                         android:layout_margin="8dp"/>
-
-                <Spinner android:layout_width="64dp"
-                         android:layout_marginRight="58dp"
-                         android:layout_height="match_parent"
-                         android:id="@+id/spinner"
-                         android:entries="@array/Currencylist"
-                         android:background="@color/colorPrimary" android:spinnerMode="dropdown"
-                         android:scrollbarSize="24dp"
-                />
+                <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:entries="@array/Currencylist"
+                        android:layout_marginRight="20"
+                        />
                 <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
